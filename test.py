@@ -1,3 +1,2 @@
-print("hello")
-print("test git")
-print("test solved")
+import tkinter
+tkinter._test()
