@@ -10,7 +10,7 @@ def hello():
 
 @ app.route("/hi")
 def hi():
-    user = {'nickname': 'Kolya'}  # выдуманный пользователь
+    user = {'nickname': 'Kolya'}  # пользователь
     return '''
     <html>
       <head>
