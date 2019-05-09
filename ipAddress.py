@@ -7,15 +7,16 @@ class test_ip:
         return splited_ip
 
     def ip_to_bin(self, splitted_ip):
-        bin_ip = {}
+        bin_ip = ""
         i = 0
         for x in splitted_ip:
-            bin_ip[i] = bin(int(x))[2:]
-            print(bin(int(x))[2:])
+            print("{:+b}".format(x))
             i += 1
         return print(bin_ip)
+
 
 
 ip = test_ip("132.15.11.0")
 ip.ip_to_bin(ip.split_ip())
 
+print('{:*^30}'.format('centered'))
