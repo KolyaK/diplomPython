@@ -1,22 +1,21 @@
-class IpAddress():
-    def __init__(self, ip=None):
+class test_ip:
+    def __init__(self, ip):
         self.ip = ip
 
-    def ip(self, ip):
-        splitIp = str(ip).split(".", 3)
-        return splitIp
+    def split_ip(self):
+        splited_ip = str(self.ip).split(".", 3)
+        return splited_ip
 
-    def ip_to_bin(self, splited_ip):
-        i=0
-        for x in splited_ip:
-            print(bin(int(x)))
-            self.bin_splited_ip[i] = x
+    def ip_to_bin(self, splitted_ip):
+        bin_ip = {}
+        i = 0
+        for x in splitted_ip:
+            bin_ip[i] = bin(int(x))[2:]
+            print(bin(int(x))[2:])
             i += 1
+        return print(bin_ip)
 
-        return self.bin_splited_ip
 
-
-ipCalc = IpAddress()
-ipCalc.ip("192.102.0.15")
-ipCalc.ip_to_bin(ipCalc.ip("192.102.0.15"))
+ip = test_ip("132.15.11.0")
+ip.ip_to_bin(ip.split_ip())
 
