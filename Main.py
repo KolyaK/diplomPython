@@ -13,8 +13,7 @@ def my_form_post():
     text = request.form['text']
     ip = test_ip(text)
     ip.ip_to_bin(ip.split_ip())
-
-    return str(ip.__str__())
+    return  str(ip.__str__())
 
 
 if __name__ == '__main__':
