@@ -17,8 +17,8 @@ class test_ip:
         return self.bin_ip
 
     def __str__(self):
-        result = str(self.bin_ip[0] + "." + self.bin_ip[1] + "." + self.bin_ip[2] + "." + self.bin_ip[3])
-        return str(result.replace(" ", ""))
+        result = str(self.bin_ip[0] + "." + self.bin_ip[1] + "." + self.bin_ip[2] + "." + self.bin_ip[3]).replace(" ", "")
+        return result
 
 
 #ip = test_ip("132.15.11.0")
