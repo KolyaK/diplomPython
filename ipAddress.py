@@ -3,8 +3,8 @@ class test_ip:
         self.ip = ip
         self.bin_ip = {}
 
-
     def split_ip(self):
+
         splited_ip = str(self.ip).split(".", 3)
         return splited_ip
 
@@ -18,9 +18,9 @@ class test_ip:
 
     def __str__(self):
         result = str(self.bin_ip[0] + "." + self.bin_ip[1] + "." + self.bin_ip[2] + "." + self.bin_ip[3])
-        return print(result.replace(" ", ""))
+        return str(result.replace(" ", ""))
 
 
-ip = test_ip("132.15.11.0")
-ip.ip_to_bin(ip.split_ip())
-ip.__str__()
+#ip = test_ip("132.15.11.0")
+#ip.ip_to_bin(ip.split_ip())
+#ip.__str__()

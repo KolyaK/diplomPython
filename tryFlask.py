@@ -1,32 +1,21 @@
-from flask import Flask
-
+from flask import Flask, request, render_template
+from ipAddress import test_ip
 app = Flask(__name__)
 
 
-@ app.route("/")
-def hello():
-    return "hello word"
+@app.route('/')
+def my_form():
+    return render_template('my_form.html')
 
 
-@ app.route("/hi")
-def hi():
-    user = {'nickname': 'Kolya'}  # пользователь
-    return '''
-    <html>
-      <head>
-        <title>Home Page</title>
-      </head>
-      <body>
-        <h1>Hello, ''' + user['nickname'] + '''</h1>
-      </body>
-    </html>
-    '''
+@app.route('/', methods=['GET', 'POST'])
+def my_form_post():
+    text = request.form['text']
+    ip = test_ip(text)
+    ip.ip_to_bin(ip.split_ip())
+
+    return str(ip.__str__())
 
 
-@ app.route("/user/<name>")  # прием параметра через  url 
-def user(name):
-    return "<h1> Hello, {} </h1>".format(name)
-
-
-# if __name__ == '__main__':
-app.run()
+if __name__ == '__main__':
+    app.run()
