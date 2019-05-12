@@ -61,7 +61,7 @@ class testIp:
     def host(self):
         pass
 
-ip = testIp("132.15.11.0")
-ip.ip_to_bin(ip.split_ip())
-print(ip.class_of_ip("20"))
-print(ip.bin_mask("20"))
+#ip = testIp("132.15.11.0")
+#ip.ip_to_bin(ip.split_ip())
+#print(ip.class_of_ip("20"))
+#print(ip.bin_mask("20"))
