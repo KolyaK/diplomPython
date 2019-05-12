@@ -8,10 +8,10 @@ class testIp:
         return self.ip
 
     def get_bin_ip(self):
-        return str(str(self.bin_ip[0] + "." +
+        return str(self.bin_ip[0] + "." +
                      self.bin_ip[1] +
                      "." + self.bin_ip[2] + "." +
-                     self.bin_ip[3]).replace(" ", ""))
+                     self.bin_ip[3]).replace(" ", "")
 
     def get_mask(self):
         return self.mask
@@ -45,7 +45,11 @@ class testIp:
                         self.bin_ip[3]).replace(" ", "")
            return result
 
-    def wildcard(self):
+    def bin_mask(self, mask):
+        self.mask = "{binary_mask:{fill}<32}".format(binary_mask=bin(int(mask))[2:], fill="0")
+        return str(self.mask[0:9] + "." + self.mask[9:17] + "." + self.mask[17:25] + "." + self.mask[25:])
+
+    def wildcard(self, mask):
         pass
 
     def network(self):
@@ -57,6 +61,7 @@ class testIp:
     def host(self):
         pass
 
-#ip = testIp("132.15.11.0")
-#ip.ip_to_bin(ip.split_ip())
-#print(ip.class_of_ip("20"))
+ip = testIp("132.15.11.0")
+ip.ip_to_bin(ip.split_ip())
+print(ip.class_of_ip("20"))
+print(ip.bin_mask("20"))
