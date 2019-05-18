@@ -6,10 +6,10 @@ class testIp:
         self.splitted_ip = str(self.ip).split(".", 3)
 
     def get_splet_ip(self):
-        return self.splitted_ip[0] + "." + \
+        return str(self.splitted_ip[0] + "." + \
                self.splitted_ip[1] + "." +\
                self.splitted_ip[2] + "." + \
-               self.splitted_ip[3]
+               self.splitted_ip[3])
 
     def set_mask(self, mask):
         self.mask = int(mask)
@@ -31,7 +31,7 @@ class testIp:
     def ip_to_bin(self):
         i = 0
         for x in self.splitted_ip:
-            self.bin_ip[i] = x#"{message:{fill}>{width}}".format(message=bin(int(x))[2:], fill="0", width=8)
+            self.bin_ip[i] = "{message:{fill}>{width}}".format(message=bin(int(x))[2:], fill="0", width=8)
             i += 1
         return self.bin_ip
 
