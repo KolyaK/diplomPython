@@ -18,10 +18,11 @@ def my_form_post():
     return "Address: " + ip_address + "        binary form:         " + ip.get_bin_ip() + "<br>" + \
            "Mask: " + mask + "<br>"\
             "Binary mask: " + ip.bin_mask() + "<br>"\
-            "Binary wildcard: " + ip.bin_wildcard() +" <br>" \
-          #  "Network: " + ip.network() + "<br>"\
-          #  "Broadcast: " + ip.broadcast() + "<br>"\
-          #  "Hosts: " + ip.host()
+            "Binary wildcard: " + ip.get_bin_wildcard() +" <br>" \
+            "Decimal wildcard: " + ip.get_dec_wildcard() + "<br>" \
+            "Network: " + ip.get_network() + "<br>"\
+            "Broadcast: " + ip.get_dec_wildcard() + "<br>"\
+            "Hosts: " + ip.host()
 
 
 if __name__ == '__main__':
