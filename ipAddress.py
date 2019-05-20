@@ -38,7 +38,6 @@ class testIp:
         return self.bin_ip
 
     def class_of_ip(self, mask):
-        self.mask = int(mask)
         if (self.mask >0 and self.mask <= 8):
             return "Class A"
         elif (self.mask >8 and self.mask <= 16):
@@ -89,7 +88,6 @@ class testIp:
                                                           third=int(rez[16:24]),
                                                           fourth=int(rez[24:32]))
 
-
     def decimal_broadcast(self):
         dec_broadcast = self.bin_broadcast()
         return "{first}.{second}.{third}.{fourth}".format(first=int(dec_broadcast[0:8], 2),
@@ -100,19 +98,3 @@ class testIp:
     def host(self):
         hosts = str(pow(2,(32-self.mask))-2)
         return hosts
-
-  #  def __str__(self):
-  #         result = str(self.bin_ip[0] + "." +
-  #                      self.bin_ip[1] +
-  #                      "." + self.bin_ip[2] + "." +
-  #                      self.bin_ip[3]).replace(" ", "")
-  #         return result
-
-
-#ip = testIp("132.15.11.0")
-#ip.ip_to_bin(ip.split_ip())
-#print(ip.class_of_ip("20"))
-#print(ip.bin_mask())
-#print(ip.bin_wildcard())
-#print("wildcard     " + ip.get_wildcard())
-#print(ip.get_mask())
