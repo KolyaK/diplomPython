@@ -13,14 +13,16 @@ def my_form_post():
     ip_address = request.form['text']
     mask = request.form['mask']
     ip = testIp(ip_address)
-    ip.ip_to_bin(ip.split_ip())
+    ip.set_mask(mask)
+    ip.ip_to_bin()
     return "Address: " + ip_address + "        binary form:         " + ip.get_bin_ip() + "<br>" + \
            "Mask: " + mask + "<br>"\
-            "Binary mask: " + ip.bin_mask(mask) + "<br>"\
-          #  "Wildcard: " + ip.wildcard() +" <br>" \
-          #  "Network: " + ip.network() + "<br>"\
-          #  "Broadcast: " + ip.broadcast() + "<br>"\
-          #  "Hosts: " + ip.host()
+            "Binary mask: " + ip.bin_mask() + "<br>"\
+            "Binary wildcard: " + ip.get_bin_wildcard() +" <br>" \
+            "Decimal wildcard: " + ip.get_dec_wildcard() + "<br>" \
+            "Network: " + ip.get_network() + "<br>"\
+            "Broadcast: " + ip.get_dec_wildcard() + "<br>"\
+            "Hosts: " + ip.host()
 
 
 if __name__ == '__main__':
