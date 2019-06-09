@@ -1,10 +1,10 @@
-class testIp:
+class СalculateIp:
     wildcard = ""
+
     def __init__(self, ip):
         self.ip = ip
         self.bin_ip = {}
         self.splitted_ip = str(self.ip).split(".", 3)
-
 
     def get_splet_ip(self):
         return self.splitted_ip
@@ -20,10 +20,6 @@ class testIp:
                                                           second=self.bin_ip[8:16],
                                                           third=self.bin_ip[16:24],
                                                           fourth=self.bin_ip[24:32])
-            #str(self.bin_ip[0] + "." +
-             #        self.bin_ip[1] +
-              #       "." + self.bin_ip[2] + "." +
-               #      self.bin_ip[3]).replace(" ", "")
 
     def get_mask(self):
         return self.mask
@@ -50,21 +46,21 @@ class testIp:
         return str(bin_mask[0:8] + "." + bin_mask[8:16] + "." + bin_mask[16:24] + "." + bin_mask[24:])
 
     def bin_wildcard(self):
-        testIp.wildcard = "{binary_wildcard:{fill}<32}"\
+        СalculateIp.wildcard = "{binary_wildcard:{fill}<32}"\
             .format(binary_wildcard="0"*int(self.mask), fill=1)
-        return testIp.wildcard
+        return СalculateIp.wildcard
 
     def get_bin_wildcard(self):
         self.bin_wildcard()
-        return str(testIp.wildcard[0:8] + "." + testIp.wildcard[8:16] + "." \
-                   + testIp.wildcard[16:24] + "." + \
-                   testIp.wildcard[24:])
+        return str(СalculateIp.wildcard[0:8] + "." + СalculateIp.wildcard[8:16] + "." \
+                   + СalculateIp.wildcard[16:24] + "." + \
+                   СalculateIp.wildcard[24:])
 
     def get_dec_wildcard(self):
-        return "{first}.{second}.{third}.{fourth}".format(first=int(testIp.wildcard[0:8], 2),
-                                                          second=int(testIp.wildcard[8:16], 2),
-                                                          third=int(testIp.wildcard[16:24], 2),
-                                                          fourth=int(testIp.wildcard[24:32], 2))
+        return "{first}.{second}.{third}.{fourth}".format(first=int(СalculateIp.wildcard[0:8], 2),
+                                                          second=int(СalculateIp.wildcard[8:16], 2),
+                                                          third=int(СalculateIp.wildcard[16:24], 2),
+                                                          fourth=int(СalculateIp.wildcard[24:32], 2))
 
     def bin_network(self):
         binary_ip = str(self.bin_ip[0:8] + self.bin_ip[8:16] + self.bin_ip[16:24] + self.bin_ip[24:32])
@@ -96,5 +92,5 @@ class testIp:
                                                           fourth=int(dec_broadcast[24:32], 2))
 
     def host(self):
-        hosts = str(pow(2,(32-self.mask))-2)
+        hosts = str(pow(2, (32-self.mask))-2)
         return hosts
