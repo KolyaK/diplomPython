@@ -1,6 +1,4 @@
 class СalculateIp:
-    wildcard = ""
-
     def __init__(self, ip):
         self.ip = ip
         self.bin_ip = {}
@@ -34,11 +32,12 @@ class СalculateIp:
         return self.bin_ip
 
     def class_of_ip(self, mask):
-        if (self.mask >0 and self.mask <= 8):
+        mask = int(mask)
+        if (mask >0 and mask <= 8):
             return "Class A"
-        elif (self.mask >8 and self.mask <= 16):
+        elif (mask >8 and mask <= 16):
             return "Class B"
-        elif (self.mask >16 and self.mask <= 24):
+        elif (mask >16 and mask <= 24):
             return "Class C"
 
     def bin_mask(self):
@@ -57,6 +56,7 @@ class СalculateIp:
                    СalculateIp.wildcard[24:])
 
     def get_dec_wildcard(self):
+        self.bin_wildcard()
         return "{first}.{second}.{third}.{fourth}".format(first=int(СalculateIp.wildcard[0:8], 2),
                                                           second=int(СalculateIp.wildcard[8:16], 2),
                                                           third=int(СalculateIp.wildcard[16:24], 2),
@@ -78,11 +78,11 @@ class СalculateIp:
         return broadcast[:self.mask] + "1" * (32-self.mask)
 
     def get_bin_broadcast(self):
-        rez = self.bin_broadcast()
-        return "{first}.{second}.{third}.{fourth}".format(first=int(rez[0:8]),
-                                                          second=int(rez[8:16]),
-                                                          third=int(rez[16:24]),
-                                                          fourth=int(rez[24:32]))
+        res = self.bin_broadcast()
+        return "{first}.{second}.{third}.{fourth}".format(first=int(res[0:8]),
+                                                          second=int(res[8:16]),
+                                                          third=int(res[16:24]),
+                                                          fourth=int(res[24:32]))
 
     def decimal_broadcast(self):
         dec_broadcast = self.bin_broadcast()
