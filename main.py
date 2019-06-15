@@ -1,28 +1,29 @@
 from flask import Flask, request, render_template
-from ipAddress import testIp
+from сalculateIP import СalculateIp
 app = Flask(__name__)
 
 
 @app.route('/')
 def my_form():
-    return render_template('my_form.html')
+    return render_template('HomePage.html')
 
 
 @app.route('/', methods=['GET', 'POST'])
 def my_form_post():
     ip_address = request.form['text']
     mask = request.form['mask']
-    ip = testIp(ip_address)
+    ip = СalculateIp(ip_address)
     ip.set_mask(mask)
     ip.ip_to_bin()
-    return "Address: " + ip_address + "        binary form:         " + ip.get_bin_ip() + "<br>" + \
-           "Mask: " + mask + "<br>"\
-            "Binary mask: " + ip.bin_mask() + "<br>"\
-            "Binary wildcard: " + ip.get_bin_wildcard() +" <br>" \
-            "Decimal wildcard: " + ip.get_dec_wildcard() + "<br>" \
-            "Network: " + ip.get_network() + "<br>"\
-            "Broadcast: " + ip.get_dec_wildcard() + "<br>"\
-            "Hosts: " + ip.host()
+    return render_template("result.html", ipAddress = ip_address,
+                           binaryForm = ip.get_bin_ip(),
+                           mask = mask,
+                           binary_mask = ip.bin_mask(),
+                           decimal_wildcard = ip.get_dec_wildcard(),
+                           network = ip.get_network(),
+                           hosts = ip.host(),
+                           broadcast = ip.decimal_broadcast(),
+                           classIP = ip.class_of_ip(mask),)
 
 
 if __name__ == '__main__':
